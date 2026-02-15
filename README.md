@@ -70,7 +70,7 @@ The `/vote` endpoint is rate-limited to 10 requests per 15-minute window per IP 
 
 ```bash
 # clone the repo
-git clone https://github.com/YOUR_USERNAME/PollApp.git
+git clone https://github.com/SV-13/PollApp.git
 cd PollApp
 
 # server
