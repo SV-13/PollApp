@@ -2,7 +2,7 @@
 
 A web app where you can create a poll, share it via link, and collect votes with results updating in real time for all viewers.
 
-**Live URL:** _coming soon_
+**Live URL:** [https://poll-app-khaki.vercel.app](https://poll-app-khaki.vercel.app)
 
 ## Tech Stack
 
