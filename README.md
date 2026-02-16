@@ -52,6 +52,7 @@ The `/vote` endpoint is rate-limited to 10 requests per 15-minute window per IP 
 
 ## Known Limitations / What I'd Improve Next
 
+- **Render cold start** — the backend is on Render's free tier, so it spins down after ~15 min of inactivity. First request can take 30-50 seconds while it wakes up
 - **No poll expiry** — polls live forever, no way to close or delete them
 - **No authentication** — anyone with the link can vote, no user accounts
 - **Fingerprinting isn't bulletproof** — different browser = different fingerprint, so a determined user can vote twice

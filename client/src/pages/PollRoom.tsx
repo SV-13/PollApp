@@ -47,10 +47,16 @@ export default function PollRoom() {
     socket.connect();
     socket.emit("join_poll", id);
 
+    // re-join room after reconnect (e.g. mobile waking up)
+    socket.on("connect", () => {
+      socket.emit("join_poll", id);
+    });
+
     const onResults = (data: Option[]) => setOptions(data);
     socket.on("results_updated", onResults);
 
     return () => {
+      socket.off("connect");
       socket.off("results_updated", onResults);
       socket.disconnect();
     };
@@ -79,9 +85,13 @@ export default function PollRoom() {
         return;
       }
 
-      setOptions(res.results);
-      setVoted(true);
-      localStorage.setItem(`voted_${id}`, "true");
+      if (res.results) {
+        setOptions(res.results);
+        setVoted(true);
+        localStorage.setItem(`voted_${id}`, "true");
+      } else {
+        alert("Vote may not have been recorded. Try refreshing.");
+      }
     } catch {
       alert("Something went wrong, try again.");
     }
